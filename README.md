@@ -1,4 +1,4 @@
-## react-native-video-player
+## react-native-ksyvideo
 <pre>Source Type:<b> Open Source</b></pre>
 
 
