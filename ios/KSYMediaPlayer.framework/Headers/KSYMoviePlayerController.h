@@ -96,6 +96,18 @@ typedef void (^KSYPlyTextureBlock)(GLuint texId, int width, int height, double p
 - (instancetype)initWithContentURL:(NSURL *)url;
 
 /**
+ @abstract 初始化播放器并设置主播放地址和备用播放地址
+ @param url 视频主播放地址，使用HEVC流地址.
+ @param backURL 视频备用播放地址，使用H264流地址
+ @return 返回KSYMoviePlayerController对象，该对象的视频播放地址ContentURL已经初始化。此时播放器状态为MPMoviePlaybackStateStopped.
+ 
+ @discussion 如果设置了备用播放地址，则会在设备不支持硬解播放HEVC流时切换到备用播放地址进行播放
+ @warning 该方法由金山云引入，不是原生系统接口
+ @since Available in KSYMoviePlayerController 3.0.1 and later.
+ */
+- (instancetype)initWithContentURL:(NSURL *)url backupURL:(NSURL*)backupURL;
+
+/**
  @abstract 初始化播放器并设置播放地址
  @param url 视频播放地址，该地址可以是本地地址或者服务器地址.
  @param sharegroup opengl的sharegroup, 用于共享视频渲染texture
@@ -541,14 +553,15 @@ typedef void (^KSYPlyTextureBlock)(GLuint texId, int width, int height, double p
 @property(nonatomic) BOOL  bInterruptOtherAudio;
 
 /**
- @abstract 立体声平衡模式，默认立体声输出
+ @abstract 立体声平衡模式，默认立体声输出，取值范围为[-1.0, 1.0]
  @discussion 针对单声道或双声道音频播放配置时有效，多声道音频播放配置无效
  @discussion 需要佩戴耳机以区分左右声道，手机外放无效果
  @discussion prepareToPlay前配置无效，应在播放过程中动态配置
+ @discussion 该值为0.0时，左右声道都有声音，< 0时，右声道声音小于左声道；> 0时，左声道声音小于右声道
  @warning 该方法由金山云引入，不是原生系统接口
  @since Available in KSYMoviePlayerController 2.0.3 and later
  */
-@property(nonatomic) MPMovieAudioPan audioPan;
+@property(nonatomic) float audioPan;
 
 /**
  @abstract 用于检测网络连通性的地址，默认使用地址为“www.baidu.com”

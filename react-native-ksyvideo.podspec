@@ -15,9 +15,9 @@ Pod::Spec.new do |s|
   s.ios.deployment_target = "7.0"
   s.tvos.deployment_target = "9.0"
 
-  s.source       = { :git => "https://github.com/ksvc/react-native-video-player", :tag => "#{s.version}" }
+  s.source       = { :git => "https://github.com/liuminghui2017/react-native-ksyvideo", :tag => "#{s.version}" }
 
-  s.source_files  = "ios/*.{h,m}"
+  s.source_files  = "ios/**/*.{h,m}"
 
   s.dependency "React"
   s.dependency "KSYMediaPlayer_iOS"

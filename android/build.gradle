@@ -15,8 +15,7 @@ android {
 dependencies {
     compile "com.facebook.react:react-native:+"  // From node_modules
 
-    compile 'com.ksyun.media:libksyplayer-arm64:2.1.0'
-    compile 'com.ksyun.media:libksyplayer-x86:2.1.0'
-    compile 'com.ksyun.media:libksyplayer-armv7a:2.1.0'
-    compile 'com.ksyun.media:libksyplayer-java:2.1.0'
+    compile 'com.ksyun.media:libksyplayer-arm64:2.2.4'
+    compile 'com.ksyun.media:libksyplayer-armv7a:2.2.4'
+    compile 'com.ksyun.media:libksyplayer-java:2.2.4'
 }
