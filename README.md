@@ -30,7 +30,7 @@ A `<KSYVideo>` component for react-native,requires react-native >= 0.49.0
   ##### IOS:
   cd ios && pod install
 
-### 1.3 Usage Example
+#### 1.3 Usage Example
 
 ```javascript
 
