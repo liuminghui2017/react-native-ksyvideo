@@ -21,10 +21,16 @@ A `<KSYVideo>` component for react-native,requires react-native >= 0.49.0
 #### 1.1 Add it to your project
 * Install via npm
 
-Run `npm install react-native-ksyvideo --save`
+  Run `npm install react-native-ksyvideo --save`
 
+#### 1.2 Link
+* react-native >= 0.60
+  ##### Android:
+  You don't need to do anything
+  ##### IOS:
+  cd ios && pod install
 
-### 1.2 Usage Example
+### 1.3 Usage Example
 
 ```javascript
 
@@ -61,7 +67,7 @@ var styles = StyleSheet.create({
 });
 ```
 
-### 2. Android Integration
+### 2. Android Integration (react-native < 0.60)
 
 Run `react-native link` to link the react-native-ksyvideo library.
 
@@ -103,7 +109,7 @@ protected List<ReactPackage> getPackages() {
 }
 ```
 
-### 3. iOS Integration
+### 3. iOS Integration (react-native < 0.60)
 
 Run `react-native link` to link the react-native-ksyvideo library.
 
