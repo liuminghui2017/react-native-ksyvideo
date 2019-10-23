@@ -182,6 +182,15 @@
     _playWhenInactive = playWhenInactive;
 }
 
+-(void)reload:(NSString*)url {
+    if (_player) {
+        NSURL *reloadUrl = [NSURL URLWithString:url];
+       [_player reload:reloadUrl flush:TRUE];
+    } else {
+        NSLog(@"===>_player is empty");
+    }
+}
+
 - (void)registerObserver:(NSString *)notification player:(KSYMoviePlayerController*)player {
     [[NSNotificationCenter defaultCenter]addObserver:self
                                             selector:@selector(handlePlayerNotify:)

@@ -8,6 +8,8 @@
 
 #import "RCTKSYVideoManager.h"
 #import "RCTKSYVideo.h"
+#import <React/RCTUIManager.h>
+#import <React/RCTLog.h>
 
 @implementation RCTKSYVideoManager
 
@@ -57,11 +59,21 @@ RCT_EXPORT_VIEW_PROPERTY(onPlaybackResume, RCTBubblingEventBlock);
 
 
 //供js调用的函数，暂时没有实现
-RCT_EXPORT_METHOD(saveBitmap:data){
+RCT_EXPORT_METHOD(saveBitmap:(nonnull NSNumber*) reactTag){
 }
-RCT_EXPORT_METHOD(recordVideo:data){
+RCT_EXPORT_METHOD(recordVideo:(nonnull NSNumber*) reactTag){
 }
-RCT_EXPORT_METHOD(stopRecordVideo:data){
+RCT_EXPORT_METHOD(stopRecordVideo:(nonnull NSNumber*) reactTag){
+}
+RCT_EXPORT_METHOD(reload:(nonnull NSNumber*) reactTag withUrl: (NSString *) url) {
+      [self.bridge.uiManager addUIBlock:^(RCTUIManager *uiManager, NSDictionary<NSNumber *,UIView *> *viewRegistry) {
+        RCTKSYVideo *view = viewRegistry[reactTag];
+        if (!view || ![view isKindOfClass:[RCTKSYVideo class]]) {
+            RCTLogError(@"Cannot find NativeView with tag #%@", reactTag);
+            return;
+        }
+          [view reload:url];
+    }];
 }
 
 @end

@@ -1,5 +1,5 @@
 'use strict';
-import React,{ Component}from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import {
     requireNativeComponent,
@@ -8,7 +8,7 @@ import {
     findNodeHandle,
     StyleSheet,
     ViewPropTypes
-}from 'react-native';
+} from 'react-native';
 var RCT_VIDEO_REF = 'KSYVideo';
 const KSYViewPropType = ViewPropTypes || View.propTypes;
 export default class KSYVideo extends Component {
@@ -19,7 +19,7 @@ export default class KSYVideo extends Component {
     componentDidMount() {
         const source = this.props.source;
         let uri = source.uri;
-        this.setNativeProps({ src: {uri} });
+        this.setNativeProps({ src: { uri } });
     }
 
     setNativeProps(nativeProps) {
@@ -30,44 +30,43 @@ export default class KSYVideo extends Component {
         this.setNativeProps({ seek: time });
     };
 
-    _onTouch = (event)=>{
-        if (!this.props.onTouch){
+    _onTouch = (event) => {
+        if (!this.props.onTouch) {
             return;
         }
         this.props.onTouch();
     }
 
-    _onLoadStart = (event)=>{
-        if (!this.props.onLoadStart)
-        {
+    _onLoadStart = (event) => {
+        if (!this.props.onLoadStart) {
             return;
         }
         this.props.onLoadStart(event.nativeEvent);
     }
 
-    _onLoad = (event)=>{
-        if(!this.props.onLoad){
+    _onLoad = (event) => {
+        if (!this.props.onLoad) {
             return;
         }
         this.props.onLoad(event.nativeEvent);
     }
-    
-    _onEnd = (event)=>{
-        if (!this.props.onEnd){
+
+    _onEnd = (event) => {
+        if (!this.props.onEnd) {
             return;
         }
         this.props.onEnd(event.nativeEvent);
     }
 
-    _onError = (event)=>{
-        if(!this.props.onError){
+    _onError = (event) => {
+        if (!this.props.onError) {
             return;
         }
         this.props.onError(event.nativeEvent);
     }
 
-    _onProgress = (event)=>{
-        if(!this.props.onProgress){
+    _onProgress = (event) => {
+        if (!this.props.onProgress) {
             return;
         }
         this.props.onProgress(event.nativeEvent);
@@ -75,7 +74,7 @@ export default class KSYVideo extends Component {
 
     _onSeek = (event) => {
         if (this.props.onSeek) {
-          this.props.onSeek(event.nativeEvent);
+            this.props.onSeek(event.nativeEvent);
         }
     };
 
@@ -97,7 +96,7 @@ export default class KSYVideo extends Component {
         }
     };
 
-    saveBitmap(){
+    saveBitmap() {
         UIManager.dispatchViewManagerCommand(
             findNodeHandle(this.refs[RCT_VIDEO_REF]),
             UIManager.RCTKSYVideo.Commands.saveBitmap,
@@ -105,27 +104,35 @@ export default class KSYVideo extends Component {
         );
     }
 
-    render(){
+    reload(url) {
+        UIManager.dispatchViewManagerCommand(
+            findNodeHandle(this.refs[RCT_VIDEO_REF]),
+            UIManager.RCTKSYVideo.Commands.reload,
+            [url]
+        );
+    }
+
+    render() {
         const nativeProps = Object.assign({}, this.props);
         Object.assign(nativeProps, {
-           
-            onVideoTouch:this._onTouch,
+
+            onVideoTouch: this._onTouch,
             onVideoLoadStart: this._onLoadStart,
-            onVideoLoad:this._onLoad,
-            onVideoEnd:this._onEnd,
-            onVideoError:this._onError,
-            onVideoProgress:this._onProgress,
+            onVideoLoad: this._onLoad,
+            onVideoEnd: this._onEnd,
+            onVideoError: this._onError,
+            onVideoProgress: this._onProgress,
             onVideoSeek: this._onSeek,
             onReadyForDisplay: this._onReadyForDisplay,
             onPlaybackStalled: this._onPlaybackStalled,
             onPlaybackResume: this._onPlaybackResume,
         });
 
-        return (  
-                <RCTKSYVideo           
-                    {...nativeProps}
-                    ref = {RCT_VIDEO_REF}
-                />
+        return (
+            <RCTKSYVideo
+                {...nativeProps}
+                ref={RCT_VIDEO_REF}
+            />
         );
     };
 }
@@ -145,12 +152,12 @@ KSYVideo.propTypes = {
     /* Wrapper component */
     source: PropTypes.oneOfType([
         PropTypes.shape({
-          uri: PropTypes.string
+            uri: PropTypes.string
         }),
     ]),
-    timeout:PropTypes.shape({
-        prepareTimeout:PropTypes.number,
-        readTimeout:PropTypes.number,
+    timeout: PropTypes.shape({
+        prepareTimeout: PropTypes.number,
+        readTimeout: PropTypes.number,
     }),
     bufferTime: PropTypes.number,
     bufferSize: PropTypes.number,
@@ -179,9 +186,9 @@ KSYVideo.propTypes = {
     ...KSYViewPropType,
 };
 
-const RCTKSYVideo = requireNativeComponent('RCTKSYVideo',KSYVideo,{
-   nativeOnly: {
-    src: true,
-    seek: true,
-  },
+const RCTKSYVideo = requireNativeComponent('RCTKSYVideo', KSYVideo, {
+    nativeOnly: {
+        src: true,
+        seek: true,
+    },
 });

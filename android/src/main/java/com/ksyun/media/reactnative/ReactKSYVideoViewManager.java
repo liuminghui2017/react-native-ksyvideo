@@ -46,7 +46,9 @@ public class ReactKSYVideoViewManager extends SimpleViewManager<ReactKSYVideoVie
     public static final String PROP_BUFFERSIZE = "bufferSize";
 
     private static final int COMMAND_SAVEBITMAP_ID = 1;
+    private static final int COMMAND_RELOAD_ID = 2;
     private static final String COMMAND_SAVEBITMAP_NAME = "saveBitmap";
+    private static final String COMMAND_RELOAD_NAME = "reload";
     @Override
     public String getName() {
         return REACT_CLASS;
@@ -79,7 +81,8 @@ public class ReactKSYVideoViewManager extends SimpleViewManager<ReactKSYVideoVie
     @Override
     public Map<String, Integer> getCommandsMap() {
         return MapBuilder.of(
-                COMMAND_SAVEBITMAP_NAME, COMMAND_SAVEBITMAP_ID
+                COMMAND_SAVEBITMAP_NAME, COMMAND_SAVEBITMAP_ID,
+                COMMAND_RELOAD_NAME, COMMAND_RELOAD_ID
         );
     }
 
@@ -88,6 +91,9 @@ public class ReactKSYVideoViewManager extends SimpleViewManager<ReactKSYVideoVie
         switch (commandId){
             case COMMAND_SAVEBITMAP_ID:
                 video.saveBitmap();
+                break;
+            case COMMAND_RELOAD_ID:
+                video.reloadSource(args.getString(0));
                 break;
             default:
                 break;

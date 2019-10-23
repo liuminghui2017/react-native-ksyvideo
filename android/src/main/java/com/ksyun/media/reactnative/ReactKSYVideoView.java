@@ -371,6 +371,17 @@ public class ReactKSYVideoView extends RelativeLayout implements LifecycleEventL
 
     }
 
+    public void reloadSource(String url) {
+        mDataSource = url;
+        if (ksyTextureView != null)
+            ksyTextureView.reload(mDataSource, true);
+        // Context context = getContext();
+        // while (!(context instanceof Activity) && context instanceof ContextWrapper) {
+        //     context = ((ContextWrapper) context).getBaseContext();
+        // }
+        // Toast.makeText(context, url, Toast.LENGTH_SHORT).show();
+    }
+
     public void setDataSource(String url) {
         WritableMap src = Arguments.createMap();
         src.putString(ReactKSYVideoViewManager.PROP_SRC_URI, url);
