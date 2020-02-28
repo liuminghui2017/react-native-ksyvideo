@@ -66,8 +66,8 @@
 }
 
 -(void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
-    if(self.onVideoTouch){
-        self.onVideoTouch(@{});
+    if(self.onKSYVideoTouch){
+        self.onKSYVideoTouch(@{});
     }
 }
 
@@ -105,15 +105,15 @@
 
     [_player prepareToPlay];
     
-    if(self.onVideoLoadStart) {
-        self.onVideoLoadStart(@{});
+    if(self.onKSYVideoLoadStart) {
+        self.onKSYVideoLoadStart(@{});
     }
 }
 
 - (void)setSeek:(float)seekTime {
     [_player seekTo:seekTime accurate:YES];
-    if(self.onVideoSeek) {
-        self.onVideoSeek(@{@"currentTime": [NSNumber numberWithFloat:_player.currentPlaybackTime],
+    if(self.onKSYVideoSeek) {
+        self.onKSYVideoSeek(@{@"currentTime": [NSNumber numberWithFloat:_player.currentPlaybackTime],
                            @"seekTime": [NSNumber numberWithFloat:seekTime],
                            });
     }
@@ -230,7 +230,7 @@
         return;
     }
     if (MPMediaPlaybackIsPreparedToPlayDidChangeNotification ==  notify.name) {
-        if(self.onVideoLoad){
+        if(self.onKSYVideoLoad){
             int width = _player.naturalSize.width;
             int height = _player.naturalSize.height;
             if (width < 1){
@@ -242,7 +242,7 @@
             else
                 orientation = @"portrait";
             
-            self.onVideoLoad(@{
+            self.onKSYVideoLoad(@{
                                @"duration" : [NSNumber numberWithDouble:_player.duration],
                                @"currentTime": @0,
                                @"canPlayReverse": @NO,
@@ -264,16 +264,16 @@
     }
     if (MPMoviePlayerLoadStateDidChangeNotification ==  notify.name) {
         if (MPMovieLoadStateStalled & _player.loadState) {
-            if(self.onPlaybackStalled) {
-                self.onPlaybackStalled(@{});
+            if(self.onKSYPlaybackStalled) {
+                self.onKSYPlaybackStalled(@{});
             }
         }
         
         if (_player.bufferEmptyCount &&
             (MPMovieLoadStatePlayable & _player.loadState ||
              MPMovieLoadStatePlaythroughOK & _player.loadState)){
-                if(self.onPlaybackResume) {
-                    self.onPlaybackResume(@{});
+                if(self.onKSYPlaybackResume) {
+                    self.onKSYPlaybackResume(@{});
                 }
             }
     }
@@ -281,12 +281,12 @@
         //结束播放的原因
         int reason = [[[notify userInfo] valueForKey:MPMoviePlayerPlaybackDidFinishReasonUserInfoKey] intValue];
         if (reason ==  MPMovieFinishReasonPlaybackEnded) {
-            if(self.onVideoEnd){
-                self.onVideoEnd(@{});
+            if(self.onKSYVideoEnd){
+                self.onKSYVideoEnd(@{});
             }
         }else if (reason == MPMovieFinishReasonPlaybackError){
-            if(self.onVideoError){
-                self.onVideoError(@{@"errorcode" : [[notify userInfo] valueForKey:@"error"]});
+            if(self.onKSYVideoError){
+                self.onKSYVideoError(@{@"errorcode" : [[notify userInfo] valueForKey:@"error"]});
             }
         }
     }
@@ -300,8 +300,8 @@
     }
     if (MPMoviePlayerFirstVideoFrameRenderedNotification == notify.name)
     {
-        if(self.onReadyForDisplay) {
-            self.onReadyForDisplay(@{});
+        if(self.onKSYReadyForDisplay) {
+            self.onKSYReadyForDisplay(@{});
         }
     }
     
@@ -350,8 +350,8 @@
                        context:(void *)context {
     if([keyPath isEqual:@"currentPlaybackTime"])
     {
-        if(self.onVideoProgress) {
-            self.onVideoProgress(@{
+        if(self.onKSYVideoProgress) {
+            self.onKSYVideoProgress(@{
                                    @"currentTime" : [NSNumber numberWithDouble:_player.currentPlaybackTime],
                                    });
         }

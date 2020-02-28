@@ -116,16 +116,16 @@ export default class KSYVideo extends Component {
         const nativeProps = Object.assign({}, this.props);
         Object.assign(nativeProps, {
 
-            onVideoTouch: this._onTouch,
-            onVideoLoadStart: this._onLoadStart,
-            onVideoLoad: this._onLoad,
-            onVideoEnd: this._onEnd,
-            onVideoError: this._onError,
-            onVideoProgress: this._onProgress,
-            onVideoSeek: this._onSeek,
-            onReadyForDisplay: this._onReadyForDisplay,
-            onPlaybackStalled: this._onPlaybackStalled,
-            onPlaybackResume: this._onPlaybackResume,
+            onKSYVideoTouch: this._onTouch,
+            onKSYVideoLoadStart: this._onLoadStart,
+            onKSYVideoLoad: this._onLoad,
+            onKSYVideoEnd: this._onEnd,
+            onKSYVideoError: this._onError,
+            onKSYVideoProgress: this._onProgress,
+            onKSYVideoSeek: this._onSeek,
+            onKSYReadyForDisplay: this._onReadyForDisplay,
+            onKSYPlaybackStalled: this._onPlaybackStalled,
+            onKSYPlaybackResume: this._onPlaybackResume,
         });
 
         return (

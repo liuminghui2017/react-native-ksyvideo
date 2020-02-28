@@ -43,16 +43,16 @@ import java.util.TimerTask;
 public class ReactKSYVideoView extends RelativeLayout implements LifecycleEventListener, MediaController.MediaPlayerControl{
 
     public enum Events {
-        EVENT_TOUCH("onVideoTouch"),
-        EVENT_LOAD_START("onVideoLoadStart"),
-        EVENT_LOAD("onVideoLoad"),
-        EVENT_ERROR("onVideoError"),
-        EVENT_PROGRESS("onVideoProgress"),
-        EVENT_SEEK("onVideoSeek"),
-        EVENT_END("onVideoEnd"),
-        EVENT_STALLED("onPlaybackStalled"),
-        EVENT_RESUME("onPlaybackResume"),
-        EVENT_READY_FOR_DISPLAY("onReadyForDisplay");
+        EVENT_TOUCH("onKSYVideoTouch"),
+        EVENT_LOAD_START("onKSYVideoLoadStart"),
+        EVENT_LOAD("onKSYVideoLoad"),
+        EVENT_ERROR("onKSYVideoError"),
+        EVENT_PROGRESS("onKSYVideoProgress"),
+        EVENT_SEEK("onKSYVideoSeek"),
+        EVENT_END("onKSYVideoEnd"),
+        EVENT_STALLED("onKSYPlaybackStalled"),
+        EVENT_RESUME("onKSYPlaybackResume"),
+        EVENT_READY_FOR_DISPLAY("onKSYReadyForDisplay");
 
         private final String mName;
 

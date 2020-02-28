@@ -13,18 +13,18 @@
 
 @interface RCTKSYVideo : UIView
 
-@property (nonatomic, copy) RCTBubblingEventBlock onVideoLoadStart;
-@property (nonatomic, copy) RCTBubblingEventBlock onVideoLoad;
+@property (nonatomic, copy) RCTBubblingEventBlock onKSYVideoLoadStart;
+@property (nonatomic, copy) RCTBubblingEventBlock onKSYVideoLoad;
 
-@property (nonatomic, copy) RCTBubblingEventBlock onVideoError;
-@property (nonatomic, copy) RCTBubblingEventBlock onVideoProgress;
-@property (nonatomic, copy) RCTBubblingEventBlock onVideoSeek;
-@property (nonatomic, copy) RCTBubblingEventBlock onVideoEnd;
-@property (nonatomic, copy) RCTBubblingEventBlock onVideoTouch;
+@property (nonatomic, copy) RCTBubblingEventBlock onKSYVideoError;
+@property (nonatomic, copy) RCTBubblingEventBlock onKSYVideoProgress;
+@property (nonatomic, copy) RCTBubblingEventBlock onKSYVideoSeek;
+@property (nonatomic, copy) RCTBubblingEventBlock onKSYVideoEnd;
+@property (nonatomic, copy) RCTBubblingEventBlock onKSYVideoTouch;
 
-@property (nonatomic, copy) RCTBubblingEventBlock onReadyForDisplay;
-@property (nonatomic, copy) RCTBubblingEventBlock onPlaybackStalled;
-@property (nonatomic, copy) RCTBubblingEventBlock onPlaybackResume;
+@property (nonatomic, copy) RCTBubblingEventBlock onKSYReadyForDisplay;
+@property (nonatomic, copy) RCTBubblingEventBlock onKSYPlaybackStalled;
+@property (nonatomic, copy) RCTBubblingEventBlock onKSYPlaybackResume;
 
 -(void) reload: (NSString *)url;
 - (instancetype)initWithEventDispatcher:(RCTEventDispatcher *)eventDispatcher NS_DESIGNATED_INITIALIZER;
