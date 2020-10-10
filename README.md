@@ -1,3 +1,6 @@
+## 更新
+- 替换ios静态库(移除UIWebView)
+
 ## react-native-ksyvideo
 <pre>Source Type:<b> Open Source</b></pre>
 
