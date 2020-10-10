@@ -18,8 +18,9 @@ Pod::Spec.new do |s|
   s.source       = { :git => "https://github.com/liuminghui2017/react-native-ksyvideo", :tag => "#{s.version}" }
 
   s.source_files  = "ios/**/*.{h,m}"
+  s.requires_arc = true
 
-  s.vendored_frameworks = "KSYMediaPlayer.framework"
+  s.vendored_frameworks = "frameworks/KSYMediaPlayer.framework"
 
   s.dependency "React"
   # s.dependency "KSYMediaPlayer_iOS"

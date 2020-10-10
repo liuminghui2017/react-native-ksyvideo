@@ -1,5 +1,5 @@
 ## 更新
-- 替换ios静态库(移除UIWebView)
+- 替换ios静态库(移除UIWebView,无法在模拟器运行)
 
 ## react-native-ksyvideo
 <pre>Source Type:<b> Open Source</b></pre>
